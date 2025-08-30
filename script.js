@@ -95,14 +95,24 @@ function setupHammerJS(cards) {
       tinderContainer.classList.remove('tinder_nope');
       var moveOutWidth = document.body.clientWidth;
       var keep = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
+      
       if (!keep) {
         if (event.deltaX > 0) {
           likedCards.push(currentCards[Array.from(allCardsContainer.children).indexOf(el)]);
         }
+        
+        // Animate card off-screen
+        var endX = Math.sign(event.deltaX) * (moveOutWidth * 1.5);
+        var rotateDeg = event.deltaX / 15;
+        el.style.transition = 'transform 0.4s ease-out';
+        el.style.transform = 'translate(' + endX + 'px, ' + (event.deltaY * 1.5) + 'px) rotate(' + rotateDeg + 'deg)';
+        
         el.classList.add('removed');
         repositionCards();
         startNextRound();
       } else {
+        // Animate card back to original position
+        el.style.transition = 'transform 0.4s ease-out';
         el.style.transform = '';
       }
     });
@@ -239,8 +249,8 @@ document.getElementById('filter-college').addEventListener('click', function() {
 initCards(initialCardsData);
 populateListView(initialCardsData); // Also populate list view on start
 
-var nopeListener = createButtonListener(false);
-var loveListener = createButtonListener(true);
+var nopeListener = createButton-listener(false);
+var loveListener = create-button-listener(true);
 
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
