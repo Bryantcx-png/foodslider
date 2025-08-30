@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #171717;
+  background: #262626; /* Dark background for the whole page */
   overflow: hidden;
   font-family: 'Montserrat', sans-serif;
   display: flex;
@@ -14,9 +14,28 @@ body {
   height: 100vh;
 }
 
-.tinder {
-  width: 100vw;
+.main-container {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  background: #262626; /* Dark background for the app container */
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.app-title {
+  text-align: center;
+  font-size: 24px;
+  padding: 15px;
+  color: #FFFFFF; /* White text for title */
+  font-weight: 700;
+  background-color: #262626; /* Match background */
+}
+
+.tinder {
+  flex-grow: 1; /* Allows this container to fill the available space */
+  width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -37,14 +56,10 @@ body {
   z-index: 3;
 }
 
-.tinder--filter-buttons {
-  text-align: center;
-}
-
 .tinder--filter-buttons button {
-  background: #FFFFFF;
-  border: 2px solid #FFFFFF;
-  color: #333;
+  background: #404040; /* Darker button background */
+  border: 2px solid #404040;
+  color: #E0E0E0; /* Light grey text */
   padding: 8px 16px;
   border-radius: 20px;
   margin: 0 5px;
@@ -60,17 +75,17 @@ body {
 }
 
 .tinder--filter-buttons button:hover {
-  background: #f0f0f0;
+  background: #505050;
 }
 
 .tinder--filter-buttons button.active {
-  background: #314158;
-  color: #FFFFFF;
-  border-color: #314158;
+  background: #FFACE4;
+  color: #262626; /* Dark text on active button */
+  border-color: #FFACE4;
 }
 
 .tinder--list-view-btn {
-  background: #FFFFFF;
+  background: #404040; /* Darker button background */
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -107,7 +122,6 @@ body {
 }
 
 .tinder_nope .fa-remove {
-  color: #CDD6DD;
   opacity: 0.7;
   transform: scale(1);
 }
@@ -123,7 +137,7 @@ body {
 }
 
 .no-cards-message {
-  color: #777;
+  color: #AAAAAA; /* Light grey for message */
   font-size: 18px;
   font-weight: bold;
 }
@@ -132,8 +146,8 @@ body {
   display: inline-block;
   width: 90vw;
   max-width: 400px;
-  height: 70vh;
-  background: #FFFFFF;
+  height: 65vh; /* Adjusted height to fit screen better */
+  background: #404040; /* Darker card background */
   padding-bottom: 40px;
   border-radius: 8px;
   overflow: hidden;
@@ -143,7 +157,7 @@ body {
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .moving.tinder--card {
@@ -155,24 +169,26 @@ body {
 
 .tinder--card img {
   width: 100%;
-  height: 300px;
+  height: 60%; /* Gave image a percentage height */
   object-fit: cover;
   object-position: center;
   pointer-events: none;
 }
 
 .tinder--card h3 {
-  margin-top: 24px;
-  font-size: 32px;
+  margin-top: 20px;
+  font-size: 28px;
   padding: 0 16px;
   pointer-events: none;
+  color: #FFFFFF; /* White text on card */
 }
 
 .tinder--card p {
-  margin-top: 16px;
-  font-size: 20px;
+  margin-top: 12px;
+  font-size: 18px;
   padding: 0 16px;
   pointer-events: none;
+  color: #E0E0E0; /* Light grey text on card */
 }
 
 .tinder--buttons {
@@ -186,10 +202,10 @@ body {
   line-height: 60px;
   width: 60px;
   border: 0;
-  background: #FFFFFF;
+  background: #404040; /* Darker button background */
   display: inline-block;
   margin: 0 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .tinder--buttons button:focus {
@@ -205,13 +221,13 @@ body {
   color: #FFACE4;
 }
 
-.fa-remove {
-  color: #CDD6DD;
+.fa-times {
+  color: #888;
 }
 
 /* --- List View Styles --- */
 .tinder--list-view {
-  display: none; /* Hidden by default */
+  display: none;
   flex-grow: 1;
   overflow-y: auto;
   padding: 0 20px;
@@ -221,11 +237,11 @@ body {
 .tinder--list-item {
   display: flex;
   align-items: center;
-  background: #FFFFFF;
+  background: #404040; /* Darker list item background */
   border-radius: 8px;
   margin-bottom: 12px;
   padding: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .tinder--list-item img {
@@ -243,14 +259,54 @@ body {
 .tinder--list-item-info h3 {
   font-size: 20px;
   margin-bottom: 5px;
+  color: #FFFFFF; /* White text in list view */
 }
 
 .tinder--list-item-info p {
   font-size: 14px;
-  color: #777;
+  color: #E0E0E0; /* Light grey text in list view */
+}
+
+.app-footer {
+  text-align: center;
+  padding: 15px;
+  color: #AAAAAA; /* Light grey for footer text */
+  font-size: 12px;
+  background-color: #262626; /* Match background */
 }
 
 /* Utility class to hide elements */
 .hidden {
   display: none !important;
+}
+
+/* --- Mobile View Adjustments --- */
+@media screen and (max-width: 480px) {
+  .app-title {
+    font-size: 20px;
+  }
+  
+  .tinder--header {
+    padding: 15px 10px;
+  }
+  
+  .tinder--filter-buttons button {
+    padding: 6px 10px;
+    margin: 0 3px;
+    font-size: 13px;
+  }
+
+  .tinder--list-view-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .tinder--card h3 {
+    font-size: 24px;
+  }
+
+  .tinder--card p {
+    font-size: 16px;
+  }
 }
