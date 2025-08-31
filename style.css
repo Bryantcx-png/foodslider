@@ -94,6 +94,7 @@ body {
   border-bottom: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
+  z-index: 100;
 }
 
 .app-header::before {
